@@ -21,5 +21,6 @@ public class Constants {
     public static final Integer RESPONSE_STATUS_CODE_404 = 404;
     public static final Integer RESPONSE_STATUS_CODE_409 = 409;
     public static final String ERROR_MSG_NO_TOURIST_SELECTED = 'Tourist not selected!';
-    public static final String ERROR_CONTACT_SYSTEM_ADMINISTRATOR = 'Contact with Administrator';      
+    public static final String ERROR_CONTACT_SYSTEM_ADMINISTRATOR = 'Contact with Administrator';
+    public static final String ERROR_MSG_TRIP_NOT_SELECTED = 'Trip not selected!';      
 }
