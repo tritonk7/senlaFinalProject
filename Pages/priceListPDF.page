@@ -1,0 +1,78 @@
+<apex:page standardController="Tourists__c" extensions="PriceListPDFController"  renderAs="advanced_pdf">
+    <apex:pageBlock title="Price list of available trips.">       
+        
+    </apex:pageBlock>
+    <table border="1" > 
+        <tr>
+            <td>
+                <table width="100">
+                    <tr>  
+                        <th >Trip Name</th>
+                    </tr>  
+                </table> 
+            </td>
+            <td>
+                <table width="300">
+                    <tr>    
+                        <th>Trip Start Date</th>
+                    </tr>  
+                </table> 
+            </td>
+            <td>
+                <table width="150">
+                    <tr>    
+                        <th>Space Point</th>
+                    </tr>  
+                </table> 
+            </td>
+            <td>
+                <table width="100">
+                    <tr>    
+                        <th>Price</th>
+                    </tr>  
+                </table> 
+            </td>
+        </tr>
+    </table>       
+    <table border="1"> 
+        <tr>
+            <td>
+                <table width="100">
+                    <apex:repeat value="{!records}" var="it">
+                        <tr>  
+                            <td>{!it.Name}</td>
+                        </tr>  
+                    </apex:repeat>
+                </table> 
+            </td>
+            <td>
+                <table width="300">
+                    <apex:repeat value="{!records}" var="it">
+                        <tr>    
+                            <td>{!it.Start_Data__c}</td>
+                        </tr>  
+                    </apex:repeat>
+                </table> 
+            </td>
+            <td>
+                <table width="150">
+                    <apex:repeat value="{!records}" var="it">
+                        <tr>    
+                            <td>{!it.Departure_Space_Point__r.Name}</td>
+                        </tr>  
+                    </apex:repeat>
+                </table> 
+            </td>
+            <td>
+                <table width="100">
+                    <apex:repeat value="{!getPrice}" var="it">
+                        <tr>    
+                            <td>{!it.UnitPrice}</td>
+                        </tr>  
+                    </apex:repeat>
+                </table> 
+            </td>
+        </tr>
+    </table> 
+    
+</apex:page>

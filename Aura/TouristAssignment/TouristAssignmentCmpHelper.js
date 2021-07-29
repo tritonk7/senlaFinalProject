@@ -10,7 +10,17 @@
                 } else {
                     component.set("v.flightData", []);
                 }
-            }
+            } else if (state === "ERROR") {
+                let toastEvent = $A.get("e.force:showToast");
+                toastEvent.setParams({
+                    message: $A.get("$Label.c.flight_not_found"),
+                    duration:' 4000',
+                    type: 'error',
+                    mode: 'pester'
+                });
+                toastEvent.fire();
+                $A.get('e.force:refreshView').fire();
+            } 
         });
         $A.enqueueAction(action);
     },
@@ -24,7 +34,17 @@
                 if (records.length > 0) {
                     component.set("v.weather", records);
                 } 
-            }
+            } else if (state === "ERROR") {
+                let toastEvent = $A.get("e.force:showToast");
+                toastEvent.setParams({
+                    message: $A.get("$Label.c.Weather_not_found"),
+                    duration:' 4000',
+                    type: 'error',
+                    mode: 'pester'
+                });
+                toastEvent.fire();
+                $A.get('e.force:refreshView').fire();
+            } 
         });
         $A.enqueueAction(action);
     },
@@ -62,7 +82,17 @@
                 });
                 toastEvent.fire();
                 $A.get('e.force:refreshView').fire();
-            }
+            } else if (state === "ERROR") {
+                let toastEvent = $A.get("e.force:showToast");
+                toastEvent.setParams({
+                    message: $A.get("$Label.c.Tourist_not_added"),
+                    duration:' 4000',
+                    type: 'error',
+                    mode: 'pester'
+                });
+                toastEvent.fire();
+                $A.get('e.force:refreshView').fire();
+            } 
         });
         $A.enqueueAction(action);
     },
@@ -71,7 +101,7 @@
         let tripId = component.get("v.tripId");
         let tripsId =  [];
         let flights = component.get("v.flightData");
-        
+    
         for (let i = 0; i < flights.length; i++) {
             if (tripId == flights[i].Trip__c) {
                 tripsId.push(flights[i].Trip__c); 
@@ -129,6 +159,16 @@
             if (state === "SUCCESS") {
                 let records = response.getReturnValue();
                 component.set("v.tripData", records);
+            } else if (state === "ERROR") {
+                let toastEvent = $A.get("e.force:showToast");
+                toastEvent.setParams({
+                    message: $A.get("$Label.c.TouristsIsNotSelected"),
+                    duration:' 4000',
+                    type: 'error',
+                    mode: 'pester'
+                });
+                toastEvent.fire();
+                $A.get('e.force:refreshView').fire();
             }
         });
         $A.enqueueAction(action);
@@ -145,6 +185,16 @@
             if (state === "SUCCESS") {
                 let records = response.getReturnValue();
                 component.set("v.touristAge", records[0].Tourist_Age__c);
+            } else if (state === "ERROR") {
+                let toastEvent = $A.get("e.force:showToast");
+                toastEvent.setParams({
+                    message: $A.get("$Label.c.TouristsIsNotSelected"),
+                    duration:' 4000',
+                    type: 'error',
+                    mode: 'pester'
+                });
+                toastEvent.fire();
+                $A.get('e.force:refreshView').fire();
             }
         });
         $A.enqueueAction(action);

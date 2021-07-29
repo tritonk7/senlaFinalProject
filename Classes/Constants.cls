@@ -19,5 +19,7 @@ public class Constants {
     public static final Integer NUMB_ZERO = 0;
     public static final Integer RESPONSE_STATUS_CODE_200 = 200;
     public static final Integer RESPONSE_STATUS_CODE_404 = 404;
-    public static final Integer RESPONSE_STATUS_CODE_409 = 409;       
+    public static final Integer RESPONSE_STATUS_CODE_409 = 409;
+    public static final String ERROR_MSG_NO_TOURIST_SELECTED = 'Tourist not selected!';
+    public static final String ERROR_CONTACT_SYSTEM_ADMINISTRATOR = 'Contact with Administrator';      
 }

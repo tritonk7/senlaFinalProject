@@ -2,7 +2,7 @@
     doInit : function(component, event, helper) {
         let queryString = window.location.search;        
         let urlParams = new URLSearchParams(queryString);
-        let id = urlParams.get("id");		
+        let id = urlParams.get('id');
         component.set("v.touristId", id);
         helper.fetchFlights(component);
         helper.fetchWeather(component);
@@ -21,7 +21,7 @@
         helper.validationSubmit(component);
     },
     
-    handleConfirmDialog : function(component, event, helper) {
+    handleConfirmDialog : function(component, event) {
         component.set("v.showConfirmDialog", true);
     },
     
@@ -34,9 +34,8 @@
         component.set("v.showConfirmDialog", false);
     },
     
-    handleClean : function(component, event, helper) {
-        $A.get("e.force:refreshView").fire();
-        component.set("v.isVisibleMap", false);
-        component.set("v.isVisible", false);
+    handleOpenPrice : function(component, event, helper) {
+        let touristId = component.get('v.touristId');
+        window.open('https://tritonk-developer-edition.ap24.force.com/pricePDF?id=' + touristId,'_blank');
     }
 })

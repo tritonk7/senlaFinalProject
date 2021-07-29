@@ -20,12 +20,17 @@
     <aura:attribute name="showConfirmDialog" type="Boolean" default="false" access="public"/>
     <aura:attribute name="selectedTrip" type="Trip__c" access="public"/>
     
+    <aura:if isTrue="{!or(v.touristId == null, v.touristAge == undefined)}">
+        <c:createTourist/>
+    </aura:if>
+    
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
     <aura:handler name="change" value="{!v.spacePoint}" action="{!c.onChange}"/>
     <aura:handler name="change" value="{!v.freeSeats}" action="{!c.onChange}"/>
     <aura:handler name="eventButtonNo" event="c:EventButtonNo" action="{!c.handleConfirmDialogNo}"/>
     <aura:handler name="eventButtonYes" event="c:EventButtonYes" action="{!c.handleConfirmDialogYes}"/>
     
+    <aura:if isTrue="{!and(v.touristId != null, v.touristAge != undefined)}">
     <lightning:layout  multipleRows="true">
         <lightning:layoutItem size="12" smallDeviceSize="12" mediumDeviceSize="12" largeDeviceSize="4" padding="around-small" flexibility="auto">
             <aura:if isTrue="{!v.isVisible}">
@@ -40,6 +45,9 @@
                                 </div>
                             </p>
                         </aura:iteration>                            
+                    </div>
+                    <div class="slds-box">
+                        <lightning:button variant="brand" label="{!$Label.c.Get_price}" onclick="{!c.handleOpenPrice}"/>
                     </div>
                 </lightning:card>
             </aura:if>
@@ -65,6 +73,7 @@
             </aura:if>
         </lightning:layoutItem>
     </lightning:layout>
+    </aura:if>
     <aura:if isTrue="{!v.showConfirmDialog}">
         <c:DialogBox/>
     </aura:if>
