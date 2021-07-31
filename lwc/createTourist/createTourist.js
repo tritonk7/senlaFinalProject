@@ -20,7 +20,6 @@ export default class insertRecordCustomObjectLwc extends NavigationMixin (Lightn
    scoreHandleChange(event){
         if (event.target.name == 'scoreName') {
         this.scoreObName = event.target.value;  
-        //window.console.log('scoreObName ##' + this.scoreObName);
         }
       if (event.target.name == 'scoreBirthday') {
         this.scoreObjBirthday = event.target.value;  
@@ -56,8 +55,6 @@ handleChange(event) {
           window.open(generatedUrl);
       });
          ;
-         /*End Navigation*/
-
     })
     .catch(error =>{
        this.errorMsg=error.message;
