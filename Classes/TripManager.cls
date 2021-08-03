@@ -28,6 +28,7 @@ public class TripManager {
             FROM Trip__c
             WHERE Id != :tripIds
             AND Start_Data__c > :Date.today()
+            ORDER BY Name
         ];
     }
     public static List<Trip__c> tripNotEqualByIdGetByTouristAge(Set<String> tripIds, Decimal touristAge) {
@@ -44,6 +45,7 @@ public class TripManager {
             WHERE Id != :tripIds
             AND Start_Data__c > :Date.today()
             AND Mininmum_Age__c <= :touristAge
+            ORDER BY Name
         ];
     }
 }
