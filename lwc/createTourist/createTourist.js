@@ -2,6 +2,7 @@ import {LightningElement, track } from 'lwc';
 import submitScoreAction from '@salesforce/apex/createTourist.submitScoreAction';
 import {ShowToastEvent} from 'lightning/platformShowToastEvent';
 import {NavigationMixin} from 'lightning/navigation';
+import RecordCreated from '@salesforce/label/c.Record_created_successfully';
 
 export default class insertRecordCustomObjectLwc extends NavigationMixin (LightningElement) {
 
@@ -37,11 +38,10 @@ handleChange(event) {
  submitAction(){
     submitScoreAction({cardName:this.scoreObName,cardBirthday:this.scoreObjBirthday, cardEmail:this.scoreObjEmail, cardGender:this.value})
     .then(result => {
-        this.scoreRecoreId = result.Id;
-        window.console.log('scoreRecoreId##Vijay2 ' + this.scoreRecoreId);       
+        this.scoreRecoreId = result.Id;      
         const toastEvent = new ShowToastEvent({
             title:'Success!',
-            message:'Record created successfully',
+            message: RecordCreated,
             variant:'success'
           });
           this.dispatchEvent(toastEvent);
@@ -55,10 +55,10 @@ handleChange(event) {
           window.open(generatedUrl);
       });
          ;
+
     })
     .catch(error =>{
-       this.errorMsg=error.message;
-       window.console.log(this.error);
+       this.errorMsg = rror.message;
     });
 
  }
