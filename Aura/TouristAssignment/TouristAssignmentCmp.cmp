@@ -1,4 +1,4 @@
-<aura:component controller="TouristAssignmentCmpController" implements="flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global">
+<aura:component controller="TouristAssignmentCmpController" implements="flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes" access="global">
     <aura:attribute name="touristId" type="Id" access="public"/>
     <aura:attribute name="tripId" type="Id" access="public"/>
     <aura:attribute name="tripData" type="List" access="public"/>
@@ -19,10 +19,6 @@
     <aura:attribute name="temperature" type="Integer" access="public"/>
     <aura:attribute name="showConfirmDialog" type="Boolean" default="false" access="public"/>
     <aura:attribute name="selectedTrip" type="Trip__c" access="public"/>
-    
-    <aura:if isTrue="{!or(v.touristId == null, v.touristAge == undefined)}">
-        <c:createTourist/>
-    </aura:if>
     
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
     <aura:handler name="change" value="{!v.spacePoint}" action="{!c.onChange}"/>
@@ -76,5 +72,9 @@
     </aura:if>
     <aura:if isTrue="{!v.showConfirmDialog}">
         <c:DialogBox/>
+    </aura:if>
+    
+     <aura:if isTrue="{!or (v.touristId == null, v.touristAge == undefined)}">
+        <c:createTourist/>
     </aura:if>
 </aura:component>
