@@ -26,7 +26,7 @@
     <aura:handler name="eventButtonNo" event="c:EventButtonNo" action="{!c.handleConfirmDialogNo}"/>
     <aura:handler name="eventButtonYes" event="c:EventButtonYes" action="{!c.handleConfirmDialogYes}"/>
     
-    <aura:if isTrue="{!or(v.touristId != null, v.touristAge != undefined)}">
+    <aura:if isTrue="{!and(v.touristId != null, v.touristAge != undefined)}">
     <lightning:layout  multipleRows="true">
         <lightning:layoutItem size="12" smallDeviceSize="12" mediumDeviceSize="12" largeDeviceSize="4" padding="around-small" flexibility="auto">
             <aura:if isTrue="{!v.isVisible}">
