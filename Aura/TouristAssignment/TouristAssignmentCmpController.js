@@ -36,6 +36,7 @@
     
     handleOpenPrice : function(component, event, helper) {
         let touristId = component.get('v.touristId');
-        window.open('https://tritonk-developer-edition.ap24.force.com/pricePDF?id=' + touristId,'_blank');
+        let url = $A.get("$Label.c.urlPricePDF");
+        window.open(url + touristId,'_blank');
     }
 })
