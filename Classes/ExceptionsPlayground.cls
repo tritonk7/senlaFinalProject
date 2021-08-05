@@ -15,7 +15,6 @@ public class ExceptionsPlayground {
         }
     }
     
-
     public static void createDmlException() {   
         try {
             Tourists__c acc = new Tourists__c();
@@ -27,8 +26,7 @@ public class ExceptionsPlayground {
         }
     }
     
-   
-    public static void createOverwhelmingException() {
+       public static void createOverwhelmingException() {
         try {
             ExceptionsPlayground.createCustomException();
             ExceptionsPlayground.createDmlException();
