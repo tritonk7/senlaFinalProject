@@ -1,8 +1,6 @@
 public class ExceptionsPlayground {
     public class CustomException extends Exception {}
-    
-    //For Anonymous Code
-    //ExceptionHw.createCustomException();
+
     public static void createCustomException() {
         try { 
             Tourists__c acc = new Tourists__c();
@@ -17,8 +15,7 @@ public class ExceptionsPlayground {
         }
     }
     
-    //For Anonymous Code
-    //ExceptionHw.createDmlException();
+
     public static void createDmlException() {   
         try {
             Tourists__c acc = new Tourists__c();
@@ -30,8 +27,7 @@ public class ExceptionsPlayground {
         }
     }
     
-    //For Anonymous Code
-    //ExceptionHw.createDmlException();    
+   
     public static void createOverwhelmingException() {
         try {
             ExceptionsPlayground.createCustomException();
