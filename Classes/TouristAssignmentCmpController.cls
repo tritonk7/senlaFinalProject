@@ -10,15 +10,24 @@ public without sharing class TouristAssignmentCmpController {
     @AuraEnabled(cacheable=true)
     public static List<Trip__c> fetchTrips(String touristsId) {
         List<Flight__c> flights = FlightManager.getByTouristId(touristsId);
-        Set<String> tripIds = new Set<String>();
         
-        for (Flight__c item : flights) {
-            tripIds.add(item.Trip__c);
+        List<Trip__c> trips = TripManager.getAllTripValidDate();
+        
+        Set<String> tripsId = new Set<String>();
+        
+        for (Trip__c value : trips) {
+            
+            for (Flight__c item : flights) {
+                
+                if((value.Start_Data__c <= item.Trip__r.End_Date__c) && (item.Trip__r.Start_Data__c <= value.End_Date__c)){
+                    tripsId.add(value.Id);
+                }
+            }
         }
         
-        List<Trip__c> trips = TripManager.tripNotEqualById(tripIds);
-        
-        return trips;  
+        List<Trip__c> returnTrips = TripManager.tripNotEqualById(tripsId);
+ 
+        return returnTrips;  
     }
     
     @AuraEnabled
