@@ -48,4 +48,43 @@ public class TripManager {
             ORDER BY Name
         ];
     }
+    
+     public static List<Trip__c> tripsById(Set<String> tripsId) {
+        return [
+            SELECT Id,
+            Mininmum_Age__c,
+            Start_Data__c,
+            End_Date__c,
+            Seats__c
+            FROM Trip__c
+            WHERE Id = :tripsId
+        ]; 
+    }
+    
+     public static List<Trip__c> getAllTripValidDate() {
+         
+        return [
+            SELECT Id,
+            Name,
+            Mininmum_Age__c,
+            Start_Data__c,
+            End_Date__c,
+            Seats__c
+            FROM Trip__c
+            WHERE Start_Data__c > :Date.today()
+        ]; 
+    }
+    
+    public static List<Trip__c> getTrips(Set<String> ids) {
+        return [
+            SELECT Id,
+            Name,
+            Mininmum_Age__c,
+            Start_Data__c,
+            End_Date__c,
+            Seats__c
+            FROM Trip__c
+            WHERE Id = :ids
+        ]; 
+    }
 }
