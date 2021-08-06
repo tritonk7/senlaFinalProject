@@ -1,4 +1,4 @@
-public inherited sharing class TripRecordPageController {
+public without sharing class TripRecordPageController {
     
     @AuraEnabled(cacheable=true) 
     public static List<Tourists__c> fetchTourists(String tripId) {
